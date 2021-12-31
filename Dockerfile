@@ -38,7 +38,7 @@ RUN CFLAGS="-fPIC" && OPENSSL_VERSION="1.0.2d" \
       && ./config shared && make && make install \
       && rm -rf /tmp/*
 
-ENV PHP_VERSION=5.3.29 \
+ENV PHP_VERSION=5.2.6 \
     PHP_INI_DIR=/usr/local/lib
 
 # php 5.3 needs older autoconf
@@ -49,8 +49,8 @@ RUN set -x \
 	&& dpkg -i libbison-dev_2.7.1.dfsg-1_amd64.deb \
 	&& dpkg -i bison_2.7.1.dfsg-1_amd64.deb \
 	&& rm *.deb \
-	&& curl -SL "http://php.net/get/php-$PHP_VERSION.tar.bz2/from/this/mirror" -o php.tar.bz2 \
-	&& curl -SL "http://php.net/get/php-$PHP_VERSION.tar.bz2.asc/from/this/mirror" -o php.tar.bz2.asc \
+	&& curl -SL "https://museum.php.net/php5/php-$PHP_VERSION.tar.bz2" -o php.tar.bz2 \
+	&& curl -SL "https://museum.php.net/php5/php-$PHP_VERSION.tar.bz2.asc" -o php.tar.bz2.asc \
 	&& gpg --verify php.tar.bz2.asc \
 	&& mkdir -p /usr/src/php $PHP_INI_DIR/conf.d \
 	&& tar -xf php.tar.bz2 -C /usr/src/php --strip-components=1 \
