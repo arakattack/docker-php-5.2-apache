@@ -1,6 +1,6 @@
 FROM buildpack-deps:jessie
 
-RUN apt-get update && apt-get install -y --no-install-recommends curl \
+RUN apt-get update && apt-get install -y --no-install-recommends curl build-essential checkinstall zlib1g-dev \
     apache2-bin apache2-dev apache2.2-common && \
     rm -rf /var/lib/apt/lists/*
 
@@ -27,7 +27,7 @@ RUN CFLAGS="-fPIC" && OPENSSL_VERSION="1.0.2d" \
       && gpg --verify openssl.tar.gz.asc \
       && tar -xzf openssl.tar.gz -C openssl --strip-components=1 \
       && cd /tmp/openssl \
-      && ./config shared && make && make install \
+      && ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib && make && make install \
       && rm -rf /tmp/*
 
 ENV PHP_VERSION=5.2.6 \
