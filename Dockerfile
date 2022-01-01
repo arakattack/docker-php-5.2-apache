@@ -29,10 +29,8 @@ ENV PHP_VERSION=5.2.6 \
 
 # php 5.3 needs older autoconf
 RUN set -x \
-	&& wget --no-check-certificate http://launchpadlibrarian.net/140087283/libbison-dev_2.7.1.dfsg-1_amd64.deb \
-	&& wget --no-check-certificate http://launchpadlibrarian.net/140087282/bison_2.7.1.dfsg-1_amd64.deb \
-	&& dpkg -i libbison-dev_2.7.1.dfsg-1_amd64.deb \
-	&& dpkg -i bison_2.7.1.dfsg-1_amd64.deb \
+	&& dpkg -i http://launchpadlibrarian.net/140087283/libbison-dev_2.7.1.dfsg-1_amd64.deb \
+	&& dpkg -i http://launchpadlibrarian.net/140087282/bison_2.7.1.dfsg-1_amd64.deb \
 	&& rm *.deb \
 	&& wget --no-check-certificate https://museum.php.net/php5/php-$PHP_VERSION.tar.bz2 -O php.tar.bz2 \
 	&& wget --no-check-certificate https://museum.php.net/php5/php-$PHP_VERSION.tar.bz2.asc -O php.tar.bz2.asc \
