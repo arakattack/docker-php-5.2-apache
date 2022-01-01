@@ -20,7 +20,7 @@ COPY apache2-foreground /usr/local/bin/
 
 # compile openssl, otherwise --with-openssl won't work
 RUN wget --no-check-certificate https://www.openssl.org/source/openssl-1.0.2o.tar.gz -O openssl.tar.gz \
-	&& wget --no-check-certificate https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz.asc -O openssl.tar.gz.asc \
+	&& wget --no-check-certificate https://www.openssl.org/source/openssl-1.0.2o.tar.gz.asc -O openssl.tar.gz.asc \
 	&& gpg --verify openssl.tar.gz.asc \
 	&& tar -zxvf openssl.tar.gz \
 	&& cd openssl-1.0.2o \
