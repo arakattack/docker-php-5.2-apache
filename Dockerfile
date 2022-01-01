@@ -29,8 +29,8 @@ ENV PHP_VERSION=5.2.6 \
 
 # php 5.3 needs older autoconf
 RUN set -x \
-	&& wget --no-check-certificate https://museum.php.net/php5/php-5.2.6.tar.bz2 -O php.tar.bz2 \
-	&& wget --no-check-certificate https://museum.php.net/php5/php-5.2.6.tar.bz2.asc -O php.tar.bz2.asc \
+	&& wget https://museum.php.net/php5/php-5.2.6.tar.bz2 -O php.tar.bz2 \
+	&& wget https://museum.php.net/php5/php-5.2.6.tar.bz2.asc -O php.tar.bz2.asc \
 	&& gpg --verify php.tar.bz2.asc \
 	&& mkdir -p /usr/src/php $PHP_INI_DIR/conf.d \
 	&& tar -xf php.tar.bz2 -C /usr/src/php --strip-components=1 \
