@@ -19,7 +19,7 @@ COPY apache2.conf /etc/apache2/apache2.conf
 COPY apache2-foreground /usr/local/bin/
 
 # compile openssl, otherwise --with-openssl won't work
-RUN CFLAGS="-fPIC" && OPENSSL_VERSION="1.0.2d" \
+RUN OPENSSL_VERSION="1.0.2d" \
       && cd /tmp \
       && mkdir openssl \
       && curl -sL "https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz" -o openssl.tar.gz \
